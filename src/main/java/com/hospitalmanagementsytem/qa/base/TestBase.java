@@ -40,12 +40,18 @@ public class TestBase {
     public WebEventListner webEventListner;
     public ExtentSparkReporter extentSparkReporter;
     public ExtentReports extentReports;
+    FileInputStream fileInputStream;
     private Logger log;
     public TestBase(){
         try{
             prop=new Properties();
-            FileInputStream fileInput=new FileInputStream("C:\\Users\\cheta\\IdeaProjects\\HospitalManagementSystem\\src\\main\\java\\com\\hospitalmanagementsytem\\qa\\configure\\Property.properties");
-            prop.load(fileInput);
+            fileInputStream=new FileInputStream("C:\\Users\\cheta\\IdeaProjects\\HospitalManagementSystem\\src\\main\\java\\com\\hospitalmanagementsytem\\qa\\configure\\Property.properties");
+            try{
+                prop.load(fileInputStream);
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
         }
         catch (IOException e){
             e.printStackTrace();
