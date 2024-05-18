@@ -55,11 +55,15 @@ public class DoctorLoginPage extends TestBase {
     }
 
     public DoctorDashBoardPage login(String doctorEmail, String doctorPassword) throws InterruptedException {
+        driver.navigate().refresh();
+        Thread.sleep(1500);
         for (; ; ) {
             try {
                 email.sendKeys(doctorEmail);
                 break;
             } catch (StaleElementReferenceException e) {
+                driver.navigate().refresh();
+                Thread.sleep(1500);
                 email.sendKeys(doctorEmail);
                 break;
             }
