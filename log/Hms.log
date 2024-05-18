@@ -98,3 +98,13 @@
 17:55:37.084 [main]INFO  com.hospitalmanagementsystem.qa.test.doctor.Doc_TestScenario_001 - Entering the Email
 17:55:37.110 [main]INFO  com.hospitalmanagementsystem.qa.test.doctor.Doc_TestScenario_001 - Entering the Password
 17:55:37.110 [main]INFO  com.hospitalmanagementsystem.qa.test.doctor.Doc_TestScenario_001 - Clicking the Login Button
+19:38:37.534 [main]INFO  com.hospitalmanagementsystem.qa.test.doctor.Doc_TestScenario_001 - Verify that User can Login to the Application with valid Credentials.
+19:38:38.629 [main]INFO  com.hospitalmanagementsystem.qa.test.doctor.Doc_TestScenario_001 - Entering the Email
+19:38:38.629 [main]INFO  com.hospitalmanagementsystem.qa.test.doctor.Doc_TestScenario_001 - Entering the Password
+19:38:38.629 [main]INFO  com.hospitalmanagementsystem.qa.test.doctor.Doc_TestScenario_001 - Clicking the Login Button
+19:38:45.546 [main]INFO  com.hospitalmanagementsystem.qa.test.doctor.Doc_TestScenario_001 - Verifying the title
+19:38:45.549 [main]INFO  com.hospitalmanagementsystem.qa.test.doctor.Doc_TestScenario_001 - Home page Title is matching
+19:38:45.817 [main]INFO  com.hospitalmanagementsystem.qa.test.doctor.Doc_TestScenario_001 - Verify that User can Login to the Application with Invalid Credentials.
+19:38:46.327 [main]INFO  com.hospitalmanagementsystem.qa.test.doctor.Doc_TestScenario_001 - Entering the Email
+19:38:46.327 [main]INFO  com.hospitalmanagementsystem.qa.test.doctor.Doc_TestScenario_001 - Entering the Password
+19:38:46.327 [main]INFO  com.hospitalmanagementsystem.qa.test.doctor.Doc_TestScenario_001 - Clicking the Login Button
