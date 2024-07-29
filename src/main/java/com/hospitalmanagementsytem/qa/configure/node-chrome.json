@@ -1,0 +1,23 @@
+{
+  "capabilities": [
+    {
+      "browserName": "chrome",
+      "maxInstances": 5,
+      "seleniumProtocol": "WebDriver"
+    }
+  ],
+  "configuration": {
+    "nodeDescription": "Chrome Node",
+    "nodeMaxSession": 5,
+    "nodePort": 5555,
+    "hub": "http://192.168.1.41:4444",
+    "register": true,
+    "registerCycle": 5000,
+    "maxSession": 5,
+    "role": "node",
+    "port": 5555,
+    "hubPort": 4444,
+    "hubHost": "192.168.1.41",
+    "maxInstances": 5
+  }
+}

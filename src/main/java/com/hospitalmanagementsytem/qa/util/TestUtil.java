@@ -2,12 +2,15 @@ package com.hospitalmanagementsytem.qa.util;
 
 import com.hospitalmanagementsytem.qa.base.TestBase;
 import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.io.FileHandler;
+import org.testng.Reporter;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -22,6 +25,7 @@ public class TestUtil extends TestBase {
     public static long IMPLICITLY_WAIT=10;
     public static long PAGELOAD_TIMEOUT=10;
     public Workbook workbook;
+    private static Logger log;
     public TestUtil(String path){
         this.path=path;
     }
@@ -35,18 +39,30 @@ public class TestUtil extends TestBase {
         driver.switchTo().frame(element);
     }
     public static String takeScreenShot() {
-        String dateName=new SimpleDateFormat("yyyy.MM.dd.hh:mm.ss").format(new Date());
-        TakesScreenshot ts=(TakesScreenshot) driver;
-        File srcFile=ts.getScreenshotAs(OutputType.FILE);
-        String destPath="C:\\Users\\cheta\\IdeaProjects\\HospitalManagementSystem\\errorShots"+"HMS-"+dateName+".jpg";
-        File target=new File(destPath);
+        String dateName = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        String folderPath = "C:\\Users\\cheta\\IdeaProjects\\HospitalManagementSystem\\errorShots";
+        File folder = new File(folderPath);
+
+        // Create the folder if it doesn't exist
+        if (!folder.exists()) {
+            folder.mkdirs();
+        }
+
+        String destPath = folderPath + "\\HMS-" + dateName + ".jpg";
+        File target = new File(destPath);
+
+        TakesScreenshot ts = (TakesScreenshot) driver;
+        File srcFile = ts.getScreenshotAs(OutputType.FILE);
         try {
-            FileHandler.copy(srcFile,target);
+            FileHandler.copy(srcFile, target);
+            System.out.println("Screenshot saved at: " + destPath);
         } catch (IOException e) {
+            e.printStackTrace();
             throw new RuntimeException(e);
         }
         return destPath;
     }
+
     public Object[][] getCellData(String sheetName){
         try{
             FileInputStream file=new FileInputStream(path);
@@ -58,7 +74,7 @@ public class TestUtil extends TestBase {
         Sheet sheet=workbook.getSheet(sheetName);
         int lastRow=sheet.getLastRowNum();
         int lastCell=sheet.getRow(0).getLastCellNum();
-        Object[][] cellData=new Object[lastRow][lastCell];
+        Object[ ][] cellData=new Object[lastRow][lastCell];
         for(int i=0;i<=lastRow;i++){
             for(int j=0;i<=lastCell;i++){
                 cellData[i][j]=sheet.getRow(i+1).getCell(j).toString();

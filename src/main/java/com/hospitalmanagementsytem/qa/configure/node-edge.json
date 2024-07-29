@@ -1,0 +1,23 @@
+{
+  "capabilities": [
+    {
+      "browserName": "MicrosoftEdge",
+      "maxInstances": 5,
+      "seleniumProtocol": "WebDriver"
+    }
+  ],
+  "configuration": {
+    "nodeDescription": "Edge Node",
+    "nodeMaxSession": 5,
+    "nodePort": 5556,
+    "hub": "http://192.168.1.41:4444",
+    "register": true,
+    "registerCycle": 5000,
+    "maxSession": 5,
+    "role": "node",
+    "port": 5556,
+    "hubPort": 4444,
+    "hubHost": "192.168.1.41",
+    "maxInstances": 5
+  }
+}

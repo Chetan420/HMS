@@ -25,9 +25,11 @@ public class DoctorLoginPage extends TestBase {
     private WebElement loginButton;
     @FindBy(xpath = "//a[@class='logo']")
     private WebElement logo;
+    private WebDriverWait wait;
 
     public DoctorLoginPage(WebDriver driver) {
         this.driver = driver;
+        this.wait=new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
     }
 
@@ -55,22 +57,23 @@ public class DoctorLoginPage extends TestBase {
     }
 
     public DoctorDashBoardPage login(String doctorEmail, String doctorPassword) throws InterruptedException {
-        driver.navigate().refresh();
-        Thread.sleep(1500);
-        for (; ; ) {
+        boolean isLoggedIn = false;
+        while (!isLoggedIn) {
             try {
+                wait.until(ExpectedConditions.visibilityOf(email));
                 email.sendKeys(doctorEmail);
-                break;
+                wait.until(ExpectedConditions.visibilityOf(password));
+                password.sendKeys(doctorPassword);
+                wait.until(ExpectedConditions.elementToBeClickable(loginButton));
+                loginButton.click();
+                isLoggedIn = true;
             } catch (StaleElementReferenceException e) {
                 driver.navigate().refresh();
-                Thread.sleep(1500);
-                email.sendKeys(doctorEmail);
-                break;
+                wait.until(ExpectedConditions.visibilityOf(email));
             }
         }
-        password.sendKeys(doctorPassword);
-        loginButton.click();
         return new DoctorDashBoardPage(driver);
     }
+
 }
 

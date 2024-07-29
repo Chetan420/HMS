@@ -31,7 +31,7 @@ public class Doc_TestScenario_001 extends TestBase {
         doctorDashBoardPage=doctorLoginPage.login(email,password);
         Thread.sleep(5000);
         String actualTitle=doctorDashBoardPage.pageTitle();
-        String expectedTitle="Doctor Dashboard - Hospital Management System";
+        String expectedTitle="Patient Dashboard - Hospital Management System";
         log.info("Verifying the title");
         Assert.assertEquals(actualTitle,expectedTitle);
         log.info("Home page Title is matching");
@@ -43,7 +43,7 @@ public class Doc_TestScenario_001 extends TestBase {
         log.info("Verify that User can Login to the Application with Invalid Credentials.");
         Thread.sleep(500);
         String email=prop.getProperty("doctorEmail");
-        String password=prop.getProperty("doctorPassword");
+        String password=prop.getProperty("docInvalidPassword");
         log.info("Entering the Email");
         log.info("Entering the Password");
         log.info("Clicking the Login Button");

@@ -1,8 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Cross Browsing Test">
-    <test name="Test 1">
-        <parameter name="browserName" value="Chrome"></parameter>
+<suite name="Cross Browsing Test" parallel="tests" thread-count="1">
+    <parameter name="build" value="Build_02"></parameter>
+    <parameter name="test" value="Test_02"></parameter>
+
+    <test name="Chrome Test-Windows 10">
+        <parameter name="browserName" value="Chrome"/>
+        <parameter name="osVersion" value="Windows 10"></parameter>
+        <parameter name="browserVersion" value="126"></parameter>
+        <classes>
+            <class name="com.hospitalmanagementsystem.qa.test.doctor.Doc_TestScenario_001">
+                <methods>
+                    <include name="testCase_001"/>
+                    <include name="testCase_002"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Edge Test">
+        <parameter name="browserName" value="Edge"/>
+        <parameter name="osVersion" value="Windows 11"></parameter>
+        <parameter name="browserVersion" value="126"></parameter>
+
         <classes>
             <class name="com.hospitalmanagementsystem.qa.test.doctor.Doc_TestScenario_001">
                 <methods>
